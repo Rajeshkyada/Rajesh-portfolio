@@ -4,10 +4,243 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rajesh K | Portfolio</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --primary:#2563eb;
+  --bg:#ffffff;
+  --text:#111;
+  --card:#f3f4f6;
+}
+
+body.dark {
+  --bg:#0f172a;
+  --text:#f1f5f9;
+  --card:#1e293b;
+}
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body {
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  scroll-behavior:smooth;
+}
+
+/* NAVBAR */
+nav {
+  position:sticky;
+  top:0;
+  display:flex;
+  justify-content:space-between;
+  padding:15px 40px;
+  background:rgba(255,255,255,0.8);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid #ddd;
+}
+
+nav a {
+  text-decoration:none;
+  margin:0 10px;
+  color:var(--text);
+  font-weight:500;
+}
+
+.toggle {
+  cursor:pointer;
+  padding:5px 10px;
+  border-radius:6px;
+  border:1px solid #ccc;
+}
+
+/* HERO */
+.hero {
+  height:90vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:0 40px;
+}
+
+.hero h1 {
+  font-size:56px;
+}
+
+.hero h2 {
+  color:var(--primary);
+  margin:10px 0;
+}
+
+.hero p {
+  max-width:600px;
+  line-height:1.6;
+}
+
+.btn {
+  margin-top:20px;
+  padding:12px 22px;
+  background:var(--primary);
+  color:white;
+  border-radius:8px;
+  text-decoration:none;
+  display:inline-block;
+}
+
+/* SECTION */
+section {
+  padding:80px 40px;
+  max-width:1100px;
+  margin:auto;
+}
+
+h2 {
+  margin-bottom:20px;
+}
+
+.card {
+  background:var(--card);
+  padding:20px;
+  border-radius:12px;
+  margin-bottom:20px;
+  transition:0.3s;
+}
+
+.card:hover {
+  transform:translateY(-5px);
+}
+
+/* GRID */
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+/* FOOTER */
+footer {
+  text-align:center;
+  padding:30px;
+  border-top:1px solid #ddd;
+}
+
+/* ANIMATION */
+.fade {
+  opacity:0;
+  transform:translateY(20px);
+  transition:0.6s;
+}
+
+.fade.show {
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero h1{font-size:36px;}
+}
+</style>
 </head>
+
 <body>
-<h1>Rajesh K Portfolio</h1>
-<p>Your portfolio website file is ready.</p>
+
+<nav>
+  <div><strong>Rajesh K</strong></div>
+  <div>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+    <span class="toggle" onclick="toggleMode()">🌙</span>
+  </div>
+</nav>
+
+<section class="hero fade">
+  <h1>Rajesh K</h1>
+  <h2>Civil Engineer | Interior Designer</h2>
+  <p>
+  I am a dedicated Civil Engineer with experience in AutoCAD 2D, SketchUp 3D, BIM Revit modeling, estimation, and reinforcement detailing.
+  Skilled in structural drawings, quantity takeoffs, and site execution.
+  </p>
+  <a href="mailto:rajeshkrajeshk052@gmail.com" class="btn">Hire Me</a>
+</section>
+
+<section id="about" class="fade">
+  <h2>About Me</h2>
+  <div class="card">
+    <p><strong>Location:</strong> India</p>
+    <p><strong>Email:</strong> rajeshkrajeshk052@gmail.com</p>
+    <p><strong>LinkedIn:</strong> 
+      <a href="https://www.linkedin.com/in/rajesh-k-1b4b38265" target="_blank">View Profile</a>
+    </p>
+  </div>
+</section>
+
+<section id="skills" class="fade">
+  <h2>Skills</h2>
+  <div class="grid">
+    <div class="card">AutoCAD 2D & 3D</div>
+    <div class="card">SketchUp 3D</div>
+    <div class="card">Revit BIM</div>
+    <div class="card">Structural Drawings</div>
+    <div class="card">BOQ & Estimation</div>
+    <div class="card">Site Supervision</div>
+  </div>
+</section>
+
+<section id="projects" class="fade">
+  <h2>Projects</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Residential Building</h3>
+      <p>AutoCAD planning, structural detailing, execution.</p>
+    </div>
+    <div class="card">
+      <h3>Commercial Building</h3>
+      <p>Column layout, beam design, reinforcement details.</p>
+    </div>
+    <div class="card">
+      <h3>Interior Design</h3>
+      <p>2D planning, 3D modeling using SketchUp.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="fade">
+  <h2>Contact</h2>
+  <div class="card">
+    <p>Email: rajeshkrajeshk052@gmail.com</p>
+    <p>Phone: 9538288996</p>
+  </div>
+</section>
+
+<footer>
+  © 2026 Rajesh K | Portfolio
+</footer>
+
+<script>
+function toggleMode(){
+  document.body.classList.toggle('dark');
+}
+
+// Scroll Animation
+const fades = document.querySelectorAll('.fade');
+window.addEventListener('scroll', () => {
+  fades.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if(top < window.innerHeight - 50){
+      el.classList.add('show');
+    }
+  });
+});
+</script>
+
 </body>
 </html>
